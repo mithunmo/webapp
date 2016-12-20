@@ -1,0 +1,53 @@
+{
+"Description" : "This is LAMP stack",
+"Mappings" : {
+    "RegionMap" : {
+        "us-west-1" : { "64" : "ami-23e8a343" },
+        "us-east-1" : { "64" : "ami-b73b63a0" }
+    }
+},
+"Parameters" : {
+        "InstanceType": {
+          "Type": "String",
+          "Default": "t2.micro"
+        },
+        "RegionName" : {
+            "Type" : "String",
+            "Default" : "us-east-1a"
+        }
+},
+"Resources" : {
+    "MyEc2Instance" : {
+        "Type" : "AWS::EC2::Instance",
+        "Properties" : {
+            "ImageId" : { "Fn::FindInMap" : [ "RegionMap", "us-east-1", "64" ] },
+            "InstanceType" : {"Ref" : "InstanceType"},
+            "SubnetId" : "subnet-46d3036d",
+            "AvailabilityZone" : {"Ref" : "RegionName"},
+            "SecurityGroupIds" : ["sg-974596f3"],
+            "KeyName" : "Mofilm-Stage",
+            "UserData": {
+                "Fn::Base64": {
+                    "Fn::Join": [
+                        "",
+                        [
+                            "#!/bin/bash\n",
+                            "yum update -y\n",
+                            "yum install -y httpd24 php56 mysql55-server php56-mysqlnd\n",
+                            "service httpd start\n",
+                            "chkconfig httpd on\n"
+                        ]
+                    ]
+                }
+            }
+        }
+    },
+    "MyS3" : {
+        "Type" : "AWS::S3::Bucket",
+        "Properties" : {
+            "BucketName" : "mys3-mithun"
+        }
+    }
+
+}  
+}

@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+<title>Mithun Apps Document</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+</head>
+
+<body ng-app="myapp" ng-cloak>
+
+
+<div class="container" ng-controller="GOTController">
+<div class="container-fluid">
+
+<div class="jumbotron">
+  <h1>Game of Thrones</h1>
+</div>
+
+    <div class="row" ng-repeat="king in kings">
+     <div class="col-md-4">   {{ king.attacker_king }} </div>
+     <p>        
+        <button  ng-click="getBattleDetails(king.attacker_king)"> Get Details </button>
+        </p>
+    </div>
+
+    <br/>
+
+    <div>
+        <h2>Battle Details </h2>
+        <input type="text" ng-model="keyword" placeholder="Search" />
+        <div class="row"  ng-repeat="b in wardetail | filter:keyword">
+            <div class="col-md-4"> {{ b.name}} </div>
+             <div class="col-md-8"> {{ b.attacker_king}} =>  {{ b.defender_king}} </div> 
+             <div class="col-md-4"> {{ b.region}} </div>
+        </div>
+    </div>
+</div>
+</div>
+  
+<div style="height:200px;"> </div>
+<!--
+<div ng-controller="GOTController">
+    Battles of Westeros
+<div ng-repeat="battle in battles">
+        {{ battle.name }}
+    </div>
+</div>
+-->
+<div ng-controller="FormCtrl">
+    <h3> Grocery List </h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Purchased</th>
+              </tr>  
+        </thead>
+        <tbody>
+            <tr ng-repeat="grocery in groceryList">
+                <td> {{ grocery.name}} </td>
+                <td> <input type="checkbox" ng-model="grocery.purchased" /> </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <label> New item :
+    <input type="text" ng-model="newItem" />        
+    {{ newItem }}
+     </label>
+     <button ng-click="addItem(newItem)"> Save </button>
+ </div>
+
+ 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!--<script src="js/ng-infinite-scroll.js"> </script> -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="front.js"> </script>
+
+</body>
+</html>

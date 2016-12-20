@@ -1,0 +1,202 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+<title>Mithun Apps Document</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="css/main.css?url=1" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">CLIENT LOGO</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+
+      <ul class="nav navbar-nav navbar-right">
+      <li><a href="#">Mainnav</a></li>
+      <li><a href="#">Mainnav</a></li>
+      <li><a href="#">Mainnav</a></li>
+        <li><a href="#">Mainnav</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+<div class="clearfix"></div>
+<div class="container">
+
+<div id="sidebar">
+<ul class="list-group">
+  <li class="list-group-item">
+    <span class="badge">14</span>
+    Cras justo odio
+  </li>
+  <li class="list-group-item">
+    <span class="badge">14</span>
+    Cras justo odio
+  </li>
+  <li class="list-group-item">
+    <span class="badge">14</span>
+    Cras justo odio
+  </li>
+  <li class="list-group-item">
+    <span class="badge">14</span>
+    Cras justo odio
+  </li>
+  <li class="list-group-item">
+    <span class="badge">14</span>
+    Cras justo odio
+  </li>
+</ul>
+
+
+<div class="list-group">
+  <a href="#" class="list-group-item active">
+    Cras justo odio
+  </a>
+  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+  <a href="#" class="list-group-item">Morbi leo risus</a>
+  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+  <a href="#" class="list-group-item">Vestibulum at eros</a>
+</div>
+
+
+
+</div>
+
+<div id="main" ng-app="myApp" ng-controller="stockListCtrl">
+<div class="blog">
+<h2>Heading2</h2>
+  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, </p>
+  </div>
+
+  <div class="blog">
+<h2>Heading2</h2>
+  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, </p>
+  </div>
+
+  <div infinite-scroll='loadMore()' infinite-scroll-distance='20'>
+  <div class="blog"  ng-repeat="x in myData" >
+      <h2> {{ x.name }} </h2>
+
+      <div ng-controller="stockCtrl">
+         <h2> {{ stockData }} </h2>
+         <input ng-model="x.dataset_code">
+      </div>
+
+</div>
+<div class="text-center" ng-show="busy"><img src="images/loading.gif">  </div>
+
+</div>
+
+</div>
+<aside>
+<div class="list-group">
+  <a href="#" class="list-group-item active">
+    Cras justo odio
+  </a>
+  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+  <a href="#" class="list-group-item">Morbi leo risus</a>
+  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+  <a href="#" class="list-group-item">Vestibulum at eros</a>
+</div>
+
+<ul class="list-group">
+  <li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
+  <li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
+  <li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
+  <li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
+</ul>
+<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-success">Dapibus ac facilisis in</a>
+  <a href="#" class="list-group-item list-group-item-info">Cras sit amet nibh libero</a>
+  <a href="#" class="list-group-item list-group-item-warning">Porta ac consectetur ac</a>
+  <a href="#" class="list-group-item list-group-item-danger">Vestibulum at eros</a>
+</div>
+</aside>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/ng-infinite-scroll.js"> </script>
+<script>
+var app = angular.module('myApp', ['infinite-scroll']);
+
+app.controller('stockListCtrl', function($scope, $http) {
+    $scope.showData = 1;
+    $scope.myData = [];
+    $scope.counter = 1 ;
+    $scope.busy = 0;
+    $scope.loadMore = function () {
+      if ($scope.busy == 1){
+        return;
+      }
+      $scope.busy = 1;
+      console.log($scope.counter);
+      $http.get("https://www.quandl.com/api/v3/datasets.json?database_code=NSE&per_page=20&sort_by=id&api_key=wuLC-1sVmoLqys7YHzaX&page="+$scope.counter).then(function(response) {
+          var items = response.data.datasets;
+          for (var i = 0; i < items.length; i++) {
+             $scope.myData.push(items[i]);
+          }
+          ++$scope.counter;
+          $scope.busy = 0;
+
+      },function(response) {
+        console.log("error");
+        $scope.myData.name = "Error";
+
+    });
+   }
+    $scope.loadMore();
+});
+
+app.controller('stockCtrl', function($scope, $http) {
+    var url = "https://www.quandl.com/api/v3/datasets/NSE/" + $scope.x.dataset_code + ".json?column_index=5&rows=1&api_key=wuLC-1sVmoLqys7YHzaX"
+    $http.get(url).then(function(response) {
+        $scope.showData = 0;
+        if (response.data.dataset.data.length > 0 ){
+          $scope.stockData = response.data.dataset.data[0][1];
+      } else {
+        $scope.stockData = "No Value";
+      }
+    },function(response) {
+      $scope.stockData = "Error Value";
+  });
+});
+
+</script>
+
+</body>
+</html>
